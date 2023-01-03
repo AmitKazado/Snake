@@ -17,4 +17,4 @@ class Food(Turtle):
         self.generate_new_location()
 
     def generate_new_location(self):
-        self.goto(random.randint(-290, 290), random.randint(-290, 260))
+        self.goto(random.randint(-270, 270), random.randint(-270, 270))
