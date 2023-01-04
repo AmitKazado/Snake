@@ -13,3 +13,4 @@ Python version: 3.10.7
 PyCharm version: 2022.2.1, Community edition
 
 
+![my snake game gif](https://user-images.githubusercontent.com/44847490/210595240-7c916903-ea0a-4899-984b-57b81d3dc156.gif)
