@@ -1,3 +1,4 @@
+import time
 from turtle import Screen
 from Food import Food
 from Scoreboard import Scoreboard
@@ -19,12 +20,14 @@ screen.onkey(snake.up, "Up")
 screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
+screen.onkey(snake.change_snake_state, "p")
 
 food = Food()
 scoreboard = Scoreboard()
 game_is_on = True
 
 while game_is_on:
+    time.sleep(0.1)
     screen.update()
     snake.move()
 
@@ -35,10 +38,16 @@ while game_is_on:
 
     if snake.head.xcor() > MAX_BOUNDARY or snake.head.ycor() > MAX_BOUNDARY or snake.head.xcor() < MIN_BOUNDARY or snake.head.ycor() < MIN_BOUNDARY:
         scoreboard.game_over()
-        game_is_on = False
+        time.sleep(1)
+        # game_is_on = False
+        scoreboard.reset()
+        snake.reset()
 
     if not snake.is_move_legit():
         scoreboard.game_over()
-        game_is_on = False
+        time.sleep(1)
+        # game_is_on = False
+        scoreboard.reset()
+        snake.reset()
 
 screen.exitonclick()

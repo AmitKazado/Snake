@@ -1,4 +1,3 @@
-import time
 from turtle import Turtle
 
 MOVE_DISTANCE = 20
@@ -16,6 +15,7 @@ class Snake:
         self.links = []
         self.create_snake()
         self.head = self.links[0]
+        self.snake_should_move = True
 
     def create_snake(self):
         for position in POSITIONS:
@@ -35,20 +35,32 @@ class Snake:
         self.links.append(link)
 
     def move(self):
-        time.sleep(0.1)
-        for link in range(len(self.links) - 1, 0, -1):
-            # updating the snake's links from the end point to starting point
-            x = round(self.links[link - 1].xcor())
-            y = round(self.links[link - 1].ycor())
-            self.links[link].goto(x, y)
-        self.links[0].forward(MOVE_DISTANCE)
+        if self.snake_should_move:
+            for link in range(len(self.links) - 1, 0, -1):
+                # updating the snake's links from the end point to starting point
+                x = round(self.links[link - 1].xcor())
+                y = round(self.links[link - 1].ycor())
+                self.links[link].goto(x, y)
+            self.links[0].forward(MOVE_DISTANCE)
+
+    def change_snake_state(self):
+        self.snake_should_move = not self.snake_should_move
 
     # searches if snake's head touches the body
     def is_move_legit(self):
         for link in self.links[1:]:
-            if self.head.distance(link) < 10:
+            if self.head.distance(link) < 8:
                 return False
         return True
+
+    def reset(self):
+        for link in self.links:
+            link.hideturtle()
+
+        self.links.clear()
+        self.create_snake()
+        self.head = self.links[0]
+        self.snake_should_move = True
 
     def up(self):
         if self.head.heading() != DOWN:
