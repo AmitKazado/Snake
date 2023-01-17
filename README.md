@@ -2,7 +2,9 @@
 
 ## Game Objective:
 Challenge yourself in this good old-fashioned Snake game and try to get the highest score you can by eating the Food.
+
 each time you eat a food object (a blue circle) you get 1 point added to your score.
+
 In case of hitting the wall or bumping the snake's head into his body - your game will be over.
 
 ## Game Rules & Mechanics:
